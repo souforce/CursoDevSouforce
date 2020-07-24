@@ -1,0 +1,46 @@
+<apex:page id="AccountPDF" renderAs="pdf" sidebar="false" showHeader="false" docType="html-5.0" applyBodyTag="false" applyHtmlTag="false" controller="AccountPDFController">
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PDF</title>
+        <style>
+            ul{
+                list-style: none;
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            <h1>Account Information</h1>
+            Name: {!currentAccount.Name}
+            Phone: {!currentAccount.Phone}
+            WebSite: {!currentAccount.WebSite}
+        </section>
+        <section>
+            <h1>Contact Information</h1>
+            <ul>
+                <apex:repeat value="{!contactsInformation}" var="conInfo">
+                    <li>
+                        {!conInfo}
+                    </li>
+                </apex:repeat>
+            </ul>
+        </section>
+        <section>
+            <h1> Terms and Conditions</h1>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam odio est, convallis eget iaculis ut, aliquam in ligula. Maecenas nec nibh luctus, varius est vitae, lacinia sem. In at dictum magna. Pellentesque a congue eros, a tincidunt velit. Aliquam eleifend commodo sagittis. Praesent in diam ac ex aliquam tristique a et mi. Mauris mattis, sapien nec scelerisque lobortis, odio nunc pharetra urna, et porta nisl lacus id purus.
+
+Phasellus laoreet lacus magna, non accumsan lorem gravida quis. Nunc vel egestas lacus. Pellentesque eget leo fringilla, mattis neque quis, bibendum nisl. Nunc fringilla, nibh tincidunt luctus rutrum, augue nisl tempor orci, eleifend interdum felis eros in nulla. Vivamus efficitur nec ligula rutrum tempor. Pellentesque porta sapien quis porta iaculis. Vestibulum interdum elit ut consequat aliquet. Sed a cursus tortor. Cras in auctor ipsum. Etiam dapibus, nisi a vestibulum malesuada, diam neque tempor est, vitae placerat justo neque sed erat. Nunc quis sapien non lorem tincidunt efficitur. Suspendisse tincidunt sed lacus ac consectetur.
+
+Donec diam urna, sodales nec urna eget, consectetur fringilla arcu. Quisque in posuere tortor. Nam vel metus sed eros porttitor rutrum vitae non turpis. Pellentesque a elementum felis, in congue dui. Sed ut sapien odio. Vivamus non justo sed lacus euismod bibendum. Nulla nec fringilla leo. Etiam tellus felis, vestibulum sagittis ligula eu, dictum egestas est. Morbi vel eleifend turpis.
+
+Aenean vehicula blandit augue quis faucibus. Fusce et erat quam. Proin tellus erat, iaculis id enim eu, mattis aliquet turpis. Quisque blandit consectetur pellentesque. Curabitur tempor metus quis quam scelerisque, ut scelerisque orci pellentesque. Suspendisse eget quam eget justo feugiat vulputate a eleifend ipsum. Donec mollis, orci sed feugiat consequat, odio dolor porta lectus, in aliquet lectus urna ac arcu.
+
+Phasellus vitae lorem eget tellus tempor pulvinar eget ut augue. Nulla eleifend rhoncus diam vel suscipit. Morbi lacinia tortor ut nunc viverra tincidunt. Quisque nunc erat, aliquam sit amet odio ut, facilisis scelerisque lacus. Donec aliquam semper mi id mollis. Nulla convallis ante nisi, vitae tristique quam elementum et. Cras lacinia ut lectus id consequat. Duis mauris risus, hendrerit eu risus quis, lacinia tincidunt orci. Quisque erat leo, finibus id molestie nec, viverra ac diam.
+            </p>
+        </section>
+    </body>
+</html>
+</apex:page>

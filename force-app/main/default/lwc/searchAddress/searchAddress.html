@@ -1,0 +1,27 @@
+<template>
+    <lightning-layout multiple-rows=true class="slds-box slds-theme_default">
+        <lightning-layout-item size="10">
+            <lightning-input variant="label-inline" label="Postal / Zip code" type="text" value={inputZipCode} onchange={updateZipCode} name="cepField"></lightning-input>
+        </lightning-layout-item>
+        <lightning-layout-item size="1" class="slds-m-top_xx-small">
+            <lightning-button  variant="brand" label="Search" onclick={callAddressWS}></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item if:true={address} size=12>
+            <lightning-input-address class="slds-m-left_x-small slds-m-bottom_x-small"
+                address-label="Address"
+                street-label="Street"
+                city-label="City"
+                country-label="Country"
+                province-label="State"
+                postal-code-label="Zip Code"
+                street={address.logradouro}
+                city={address.localidade}
+                country="Brasil"
+                province={address.uf}
+                postal-code={address.cep}
+                
+            ></lightning-input-address>
+            <lightning-button  variant="success" label="Save" onclick={updateAddress}></lightning-button>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

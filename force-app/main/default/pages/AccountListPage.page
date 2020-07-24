@@ -1,0 +1,74 @@
+<apex:page id="AccountPage" sidebar="false" showHeader="false" applyBodyTag="false" applyHtmlTag="false" docType="html-5.0" standardController="Account" recordSetVar="accounts">
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <apex:slds />
+</head>
+<body>
+    <div class="slds-scope">
+        <apex:form id="listForm">
+            <apex:outputPanel layout="block" styleClass="slds-card">
+                <div class="slds-card__header slds-grid">
+                    <h1 class="slds-text-heading_medium slds-size--5-of-12">Account List</h1>
+                    <apex:commandButton id="newButtonId" value="New Account" styleClass="slds-button slds-button_neutral" action="{!URLFOR($Action.Account.New)}" />
+                </div>
+                
+                <div class="slds-select_container" style="width:300px">
+                    <apex:selectList styleClass="slds-select" value="{!filterId}" size="1"> <apex:selectOptions value="{!listViewOptions}"/>
+                        <apex:actionSupport event="onchange" reRender="listForm"/>
+                    </apex:selectList>  
+                </div>
+                
+                <apex:dataTable styleClass="slds-table" value="{!accounts}" var="account" rows="{!PageSize}">
+                        <apex:column>
+                            <apex:facet name="header"> </apex:facet>
+                            <apex:commandLink value="Edit" action="{!URLFOR($Action.Account.Edit,account.Id)}"/> |
+                            <apex:commandLink value="PDF" action="{!URLFOR($Page.AccountPDF,null,[Id=account.Id])}" target="_blank"/>
+                        </apex:column>
+                        <apex:column>
+                            <apex:facet name="header"> Name </apex:facet>
+                            <apex:outputLink value="/apex/ViewAccountDetail?Id={!account.Id}">{!account.Name} </apex:outputLink>
+                        </apex:column>
+                        <apex:column value="{!account.Phone}" headerValue="Phone"/>
+                        <apex:column value="{!account.Website}" headerValue="WebSite"/>
+                </apex:dataTable>
+                <apex:outputPanel layout="block" style="display:flex; flex-direction:row; justify-content:space-between">
+                    <div>
+                        {!PageNumber} of {! CEILING(ResultSize / PageSize) }
+                    </div>
+                    <div>
+                        <apex:commandButton styleClass="slds-button slds-button_brand" action="{!First}" value="<< First"/>
+                        <apex:commandButton styleClass="slds-button slds-button_brand" action="{!Previous}" value="< Previous"/>
+                        <apex:commandButton styleClass="slds-button slds-button_brand" action="{!Next}" value="Next >"/>
+                        <apex:commandButton styleClass="slds-button slds-button_brand" action="{!Last}" value="Last >>"/>
+                    </div>
+                    <div class="slds-select_container" styleClass="slds-select" style="width:30px">
+                        <apex:selectList value="{!PageSize}" size="1">
+                            <apex:selectOption itemValue="5" itemLabel="5"/>
+                            <apex:selectOption itemValue="10" itemLabel="10"/>
+                            <apex:selectOption itemValue="15" itemLabel="15"/>
+                            <apex:selectOption itemValue="20" itemLabel="20"/>
+                            <apex:actionSupport event="onchange" reRender="listForm"/>
+                        </apex:selectList>
+                    </div>
+                </apex:outputpanel>
+            </apex:outputPanel>
+        </apex:form>
+    </div>
+    {!$CurrentPage.parameters.name}
+</body>
+<script>
+
+    //alert(document.getElementById('{!$Component.listForm.newButtonId}'));    
+    /*
+        XSS ( Cross-Site Scripting)
+        Clickjack
+        CSRF ( Cross-Site Request Forgery)
+    */
+
+</script>
+</html>
+</apex:page>
+

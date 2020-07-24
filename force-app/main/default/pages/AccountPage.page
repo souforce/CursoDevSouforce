@@ -1,0 +1,19 @@
+<apex:page id="AccountPage" lightningStylesheets="true" sidebar="false" showHeader="true" docType="html-5.0" standardController="Account" extensions="AccountControllerExtension">
+    <apex:form id="accountForm">
+        <apex:pageBlock mode="edit">
+            <apex:pageBlockButtons location="top">
+                <apex:commandButton value="Save" action="{!saveAccount}" />
+            </apex:pageBlockButtons>
+            <apex:pageBlockSection title="Account Information" columns="2">
+                <apex:inputField value="{!account.Name}"/> 
+                <apex:inputField value="{!account.Site}"/> 
+                <apex:inputField value="{!account.Phone}"/> 
+            </apex:pageBlockSection>
+            <c:ContactList isEditMode="true" list="{!listContact}" newContactAction="{!addContact}" deleteContactAction="{!deleteContact}" />
+            <div id="idTeste"></div>
+        </apex:pageBlock>
+    </apex:form> 
+    <script>
+        document.getElementById('idTest').innerHTML = '{!JSENCODE($CurrentPage.parameters.name)}';
+    </script>
+</apex:page>

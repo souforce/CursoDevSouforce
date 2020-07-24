@@ -1,0 +1,4 @@
+@IsTest
+public class MyAccountControllerTest {
+    
+}
