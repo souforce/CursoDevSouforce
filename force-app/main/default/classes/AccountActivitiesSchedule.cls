@@ -1,6 +1,6 @@
 public with sharing class AccountActivitiesSchedule implements Schedulable{
     public AccountActivitiesSchedule() {
-
+        //commit on master
     }
 
     public void execute(SchedulableContext sc){
