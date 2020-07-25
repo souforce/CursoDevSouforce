@@ -1,4 +1,5 @@
 public class AccountTriggerHelper {
+    //new commit feature
     public static void formatPhone(Account account){
 
         String areaCode = account.phone.substring(0,2);
